@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+			id="twitter-connect-plugin"
+			version="0.6.0">
+	<name>Twitter Connect</name>
+	<description>Twitter Connect Plugin</description>
+	<license>Apache 2.0</license>
+	<keywords>cordova,twitter,login,connect</keywords>
+	<repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git</repo>
+	<issue>https://issues.apache.org/jira/browse/CB/component/12320653</issue>
+
+	<engines>
+		<engine name="cordova-android" version=">3.9.9" />
+	</engines>
+
+	<js-module src="www/TwitterConnect.js" name="TwitterConnect">
+		<clobbers target="TwitterConnect" />
+	</js-module>
+
+	<preference name="TWITTER_KEY" />
+	<preference name="TWITTER_SECRET" />
+
+	<!-- android -->
+	<platform name="android">
+
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="TwitterConnect">
+				<param name="android-package" value="com.manifestwebdesign.twitterconnect.TwitterConnect" />
+			</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+		</config-file>
+		<config-file target="res/xml/config.xml" parent="widget">
+			<preference name="TwitterConsumerKey" value="$TWITTER_KEY" />
+			<preference name="TwitterConsumerSecret" value="$TWITTER_SECRET" />
+		</config-file>
+
+		<framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
+		<source-file src="src/android/TwitterConnect.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+		<source-file src="src/android/UserShowServiceApi.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+		<source-file src="src/android/VerifyCredentialsServiceApi.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+	</platform>
+
+	<!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="TwitterConnect">
+				<param name="ios-package" value="TwitterConnect" />
+			</feature>
+		</config-file>
+		<config-file target="config.xml" parent="widget">
+			<preference name="TwitterConsumerKey" value="$TWITTER_KEY" />
+			<preference name="TwitterConsumerSecret" value="$TWITTER_SECRET" />
+			<preference name="deployment-target" value="7.0" />
+			<preference name="BackupWebStorage" value="local" /> <!-- disables web storage backup to iCloud -->
+		</config-file>
+
+		<header-file src="src/ios/TwitterConnect.h" />
+		<source-file src="src/ios/TwitterConnect.m" />
+
+		<framework src="src/ios/TwitterKit.framework" custom="true" />
+		<framework src="src/ios/TwitterCore.framework" custom="true" />
+		<framework src="src/ios/SafariServices.framework" custom="true" />
+		<resource-file src="src/ios/TwitterKitResources.bundle" />
+		<resource-file src="src/ios/TwitterShareExtensionUIResources.bundle" />
+
+		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+			<array>
+				<dict>
+					<key>CFBundleURLSchemes</key>
+					<array>
+						<string>twitterkit-$TWITTER_KEY</string>
+					</array>
+				</dict>
+			</array>
+		</config-file>
+		<config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+			<array>
+				<string>twitter</string>
+				<string>twitterauth</string>
+			</array>
+		</config-file>
+	</platform>
+</plugin>
