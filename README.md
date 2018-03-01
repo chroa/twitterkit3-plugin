@@ -1,4 +1,4 @@
-# twitter-connect-plugin
+# twitter-plugin
 ### **Using Twitter Kit 3**
 Cordova/PhoneGap plugin to use Twitter Single Sign On 
 
