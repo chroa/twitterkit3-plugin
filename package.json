@@ -1,9 +1,9 @@
 {
-  "name": "twitter-connect-plugin",
+  "name": "twitterkit3-plugin",
   "version": "0.6.0",
-  "description": "Twitter Connect Plugin - Allows single-sign on logins using Twitter",
+  "description": "twitterkit3-plugin - Allows single-sign on logins using Twitter",
   "cordova": {
-    "id": "twitter-connect-plugin",
+    "id": "twitterkit3-plugin",
     "platforms": [
       "android",
       "ios"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ManifestWebDesign/twitter-connect-plugin.git"
+    "url": "git+https://github.com/chroa/twitterkit3-plugin.git"
   },
   "keywords": [
     "cordova",
@@ -31,7 +31,7 @@
   "author": "Nathan Kerr",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/ManifestWebDesign/twitter-connect-plugin/issues"
+    "url": "https://github.com/chroa/twitterkit3-plugin/issues"
   },
-  "homepage": "https://github.com/ManifestWebDesign/twitter-connect-plugin#readme"
+  "homepage": "https://github.com/chroa/twitterkit3-plugin#readme"
 }
